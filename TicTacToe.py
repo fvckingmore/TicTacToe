@@ -40,21 +40,15 @@ def main():
 
 def f_mostrar(mint, mext):
 
-	for i in range(3):
-
-		print("\t", end="")
-		print(i + 1, end="")
-
-	print("\n")
+	k = 0
+	n = ("", "", "", "", "", "", "", "", "")
 
 	for i in range(3):
-
-		print(i + 1, "\t", end="")
 
 		for j in range(3):
 
 			if mext[i][j] == 0:
-				print("", end="\t")
+				print(n[k], end="\t")
 
 			elif mext[i][j] == 1:
 
@@ -64,6 +58,8 @@ def f_mostrar(mint, mext):
 				elif mint[i][j] == 1:
 					print("ⵔ", end="\t")
 
+			k += 1
+
 		print("\n")
 
 	print("\n")
@@ -71,9 +67,9 @@ def f_mostrar(mint, mext):
 	# print(mext)
 
 
-#------------------------------------
-#-----FUNCION: DATOS DEL USUARIO-----
-#------------------------------------
+#--------------------------------
+#-----FUNCION: USUARIO_VIEJA-----
+#--------------------------------
 
 
 # def f_usr(mext):
@@ -292,14 +288,15 @@ def f_2players(mint, mext):
 
 		os.system("clear")
 		f_mostrar(mint, mext)
-		print("HA GANADO ⵝ")
+
+		print("HA GANADO ⵝ\n")
 		return 1
 
 	elif f_verificar(mint, mext) == 3:
 
 			os.system("clear")
 			f_mostrar(mint, mext)
-			print("EMPATE")
+			print("EMPATE\n")
 			return 1
 
 	else:
@@ -312,14 +309,14 @@ def f_2players(mint, mext):
 
 			os.system("clear")
 			f_mostrar(mint, mext)
-			print("HA GANADO ⵔ")
+			print("HA GANADO ⵔ\n")
 			return 1
 
 		elif f_verificar(mint, mext) == 3:
 
 			os.system("clear")
 			f_mostrar(mint, mext)
-			print("EMPATE")
+			print("EMPATE\n")
 			return 1
 
 	return 0
@@ -376,6 +373,11 @@ def animacion():
 		time.sleep(0.07)
 
 
+#-------------------------------
+#-----FUNCION USUARIO_NUEVA-----
+#-------------------------------
+
+
 def f_usr(mext):
 
 	while True:
@@ -414,6 +416,7 @@ def f_usr(mext):
 			print("Esta casilla ya ha sido abierta")
 
 	return fila_usr, colum_usr
+
 
 #----------------------------
 #-----		INICIO		-----
