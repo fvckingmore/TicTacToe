@@ -164,18 +164,6 @@ def f_verificar(mint, mext):
 	b = 0
 	su = 0
 
-#---VERIFICAR CASILLAS LLENAS
-
-	for i in range(3):
-
-		for j in range(3):
-
-			su += mext[i][j]
-	# print("su = ", su)  # DEPURACION
-
-	if su == 9:
-		return 3
-
 	#---FILAS---
 
 	for i in range(3):
@@ -254,6 +242,18 @@ def f_verificar(mint, mext):
 				b = 2
 				break
 		# print("s = ", s)  # DEPURACION
+
+	#---VERIFICAR CASILLAS LLENAS
+
+	for i in range(3):
+
+		for j in range(3):
+
+			su += mext[i][j]
+	# print("su = ", su)  # DEPURACION
+
+	if su == 9:
+		return 3
 
 	return b
 
