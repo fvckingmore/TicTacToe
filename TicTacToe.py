@@ -14,6 +14,8 @@ def main():
 
 	while True:
 
+		os.system("clear")
+
 		mint = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 		mext = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
@@ -26,11 +28,33 @@ def main():
 				if f_2players(mint, mext) == 1:
 					break
 
+		else:
+
+			while True:
+
+				try:
+					op = input("Que desea ser X o O?: ")
+
+					if op.upper() == "X" or op.upper() == "O":
+						break
+
+					else:
+						print("Opcion Incorecta")
+
+				except:
+					print("Opcion Incorrecta")
+
+			animacion()
+
+			while True:
+
+				if f_1player_easy(op, mint, mext) == 1:
+					break
+
 		if not f_volver_jugar():
 			break
 
 	print("Gracias por jugar")
-	input()
 
 
 #----------------------------------
@@ -269,7 +293,6 @@ def f_volver_jugar():
 
 		else:
 			print("Opcion Incorrecta!!")
-			input()
 			os.system("clear")
 
 
@@ -418,6 +441,143 @@ def f_usr(mext):
 	return fila_usr, colum_usr
 
 
+#------------------------
+#-----FUNCION ELEGIR-----
+#------------------------
+
+
+def f_elegir(op, mint, mext):
+
+	if op.upper() == "X":
+		f_player1(mint, mext)
+		return "O"
+
+	elif op.upper() == "O":
+		f_player2(mint, mext)
+		return "X"
+
+
+#--------------------------------------------
+#-----FUNCION DIFICULTAD CPU ULTRA FACIL-----
+#--------------------------------------------
+
+
+def f_cpu_easy(op, mint, mext):
+
+	while True:
+
+		fila_usr = random.randint(0, 2)
+		colum_usr = random.randint(0, 2)
+
+		if mext[fila_usr][colum_usr] == 0:
+			break
+
+	if op == "O":
+		mext[fila_usr][colum_usr] = 1
+		mint[fila_usr][colum_usr] = 1
+
+	elif op == "X":
+		mext[fila_usr][colum_usr] = 1
+		mint[fila_usr][colum_usr] = -1
+
+	print("CPU esta jugando")
+	time.sleep(0.75)
+	print(".",)
+	time.sleep(0.5)
+	print(".",)
+	time.sleep(0.25)
+	print(".")
+	time.sleep(0.1)
+	os.system("clear")
+
+
+#-----------------------------------------------------
+#----FUNCION 1 JUGADOR CON DIFICULTAD SUPER FACIL-----
+#-----------------------------------------------------
+
+
+def f_1player_easy(op, mint, mext):
+
+	os.system("clear")
+	f_mostrar(mint, mext)
+	b = f_elegir(op, mint, mext)
+
+	if f_verificar(mint, mext) == 1:
+
+		os.system("clear")
+		f_mostrar(mint, mext)
+		print("HA GANADO ⵝ\n")
+		return 1
+
+	elif f_verificar(mint, mext) == 2:
+
+			os.system("clear")
+			f_mostrar(mint, mext)
+			print("HA GANADO ⵔ\n")
+			return 1
+
+	elif f_verificar(mint, mext) == 3:
+
+			os.system("clear")
+			f_mostrar(mint, mext)
+			print("EMPATE\n")
+			return 1
+
+	else:
+
+		os.system("clear")
+		f_mostrar(mint, mext)
+		f_cpu_easy(b, mint, mext)
+
+		if f_verificar(mint, mext) == 1:
+
+			os.system("clear")
+			f_mostrar(mint, mext)
+			print("HA GANADO ⵝ\n")
+			return 1
+
+		elif f_verificar(mint, mext) == 2:
+
+			os.system("clear")
+			f_mostrar(mint, mext)
+			print("HA GANADO ⵔ\n")
+			return 1
+
+		elif f_verificar(mint, mext) == 3:
+
+			os.system("clear")
+			f_mostrar(mint, mext)
+			print("EMPATE\n")
+			return 1
+
+	return 0
+
+
+def f_menu():
+
+	while True:
+
+		print("   .ooodool ::   ,oooo'   'ooddoo;  'x.     :dooo.   ;ooddoo' .ldodl.   doooo, ")   
+		print("      'M    xk  Kd           dk    .X:X.  .Xc           0o   ;X'   .Xl  M'        ")
+		print("      'M    xk :W            dk   .X' :X  oK            0o   Kl     cW  Mxlll     ")
+		print("      'M    xk .W,           dk   0OlllKk ,W.           0o   d0     OO  M'        ")
+		print("      .N    dd  .kxooo;      od  ck     0: ,kxooo.      kc    :kdodkl   Xxoool    ")
+
+		print("\n1. Jugar\n2. Salir\n\n")
+
+		try:
+			op = int(input("Opcion: "))
+
+			if op == 1 or op == 2:
+				break
+
+			else:
+				print("Opcion Incorrecta")
+
+		except:
+			print("Opcion Incorrecta")
+
+	return b
 #----------------------------
 #-----		INICIO		-----
 #----------------------------
