@@ -14,44 +14,53 @@ def main():
 
 	while True:
 
-		os.system("clear")
+		if f_menu() == 1:
 
-		mint = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-		mext = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-
-		if f_tipo_juego() == 2:
-
-			animacion()
+			os.system("clear")
 
 			while True:
 
-				if f_2players(mint, mext) == 1:
+				os.system("clear")
+
+				mint = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+				mext = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+				if f_tipo_juego() == 2:
+
+					animacion()
+
+					while True:
+
+						if f_2players(mint, mext) == 1:
+							break
+
+				else:
+
+					while True:
+
+						try:
+							op = input("Que desea ser X o O?: ")
+
+							if op.upper() == "X" or op.upper() == "O":
+								break
+
+							else:
+								print("Opcion Incorecta")
+
+						except:
+							print("Opcion Incorrecta")
+
+					animacion()
+
+					while True:
+
+						if f_1player_easy(op, mint, mext) == 1:
+							break
+
+				if not f_volver_jugar():
 					break
 
 		else:
-
-			while True:
-
-				try:
-					op = input("Que desea ser X o O?: ")
-
-					if op.upper() == "X" or op.upper() == "O":
-						break
-
-					else:
-						print("Opcion Incorecta")
-
-				except:
-					print("Opcion Incorrecta")
-
-			animacion()
-
-			while True:
-
-				if f_1player_easy(op, mint, mext) == 1:
-					break
-
-		if not f_volver_jugar():
 			break
 
 	print("Gracias por jugar")
@@ -155,12 +164,14 @@ def f_verificar(mint, mext):
 	b = 0
 	su = 0
 
+#---VERIFICAR CASILLAS LLENAS
+
 	for i in range(3):
 
 		for j in range(3):
 
 			su += mext[i][j]
-	print("su = ", su)  # DEPURACION
+	# print("su = ", su)  # DEPURACION
 
 	if su == 9:
 		return 3
@@ -183,7 +194,7 @@ def f_verificar(mint, mext):
 				b = 2
 				break
 
-		print("s = ", s)  # DEPURACION
+		# print("s = ", s)  # DEPURACION
 
 	#---COLUMNAS---
 
@@ -204,7 +215,7 @@ def f_verificar(mint, mext):
 				elif s == 3:
 					b = 2
 					break
-		print("s = ", s)  # DEPURACION
+		# print("s = ", s)  # DEPURACION
 
 	#---DP---
 
@@ -223,7 +234,7 @@ def f_verificar(mint, mext):
 			elif s == 3:
 				b = 2
 				break
-		print("s = ", s)  # DEPURACION
+		# print("s = ", s)  # DEPURACION
 
 	#---DS---
 
@@ -242,7 +253,7 @@ def f_verificar(mint, mext):
 			elif s == 3:
 				b = 2
 				break
-		print("s = ", s)  # DEPURACION
+		# print("s = ", s)  # DEPURACION
 
 	return b
 
@@ -367,9 +378,11 @@ def f_tipo_juego():
 
 			else:
 				print("Opcion Incorrecta")
+				os.system("clear")
 
 		except:
 			print("Opcion Incorrecta")
+			os.system("clear")
 
 
 def animacion():
@@ -553,17 +566,24 @@ def f_1player_easy(op, mint, mext):
 	return 0
 
 
+#----------------------
+#-----FUNCION MENU-----
+#----------------------
+
+
 def f_menu():
 
 	while True:
 
-		print("   .ooodool ::   ,oooo'   'ooddoo;  'x.     :dooo.   ;ooddoo' .ldodl.   doooo, ")   
+		os.system("clear")
+
+		print("   .ooodool ::   ,oooo'   'ooddoo;  'x.     :dooo.   ;ooddoo' .ldodl.   doooo, ")
 		print("      'M    xk  Kd           dk    .X:X.  .Xc           0o   ;X'   .Xl  M'        ")
 		print("      'M    xk :W            dk   .X' :X  oK            0o   Kl     cW  Mxlll     ")
 		print("      'M    xk .W,           dk   0OlllKk ,W.           0o   d0     OO  M'        ")
 		print("      .N    dd  .kxooo;      od  ck     0: ,kxooo.      kc    :kdodkl   Xxoool    ")
 
-		print("\n1. Jugar\n2. Salir\n\n")
+		print("\n1. Jugar\n2. Salir\n")
 
 		try:
 			op = int(input("Opcion: "))
@@ -577,7 +597,9 @@ def f_menu():
 		except:
 			print("Opcion Incorrecta")
 
-	return b
+	return op
+
+
 #----------------------------
 #-----		INICIO		-----
 #----------------------------
