@@ -245,15 +245,17 @@ def f_verificar(mint, mext):
 
 	#---VERIFICAR CASILLAS LLENAS
 
-	for i in range(3):
+	if b == 0:
 
-		for j in range(3):
+		for i in range(3):
 
-			su += mext[i][j]
-	# print("su = ", su)  # DEPURACION
+			for j in range(3):
 
-	if su == 9:
-		return 3
+				su += mext[i][j]
+		# print("su = ", su)  # DEPURACION
+
+		if su == 9:
+			return 3
 
 	return b
 
