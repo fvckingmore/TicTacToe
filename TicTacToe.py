@@ -229,10 +229,12 @@ def f_verificar(mint, mext):
 	if b == 0:
 
 		s = 0
+		j = 2
 
-		for i in range(2, -1, -1):
+		for i in range(3):
 
-			s += mint[i][i]
+			s += mint[i][j]
+			j -= 1
 
 			if s == -3:
 				b = 1
