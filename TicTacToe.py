@@ -70,7 +70,7 @@ def main():
 #-----FUNCION: MUESTRA TABLERO-----
 #----------------------------------
 
-
+## LISTO
 def f_mostrar(mint, mext):
 
 	k = 0
@@ -100,58 +100,6 @@ def f_mostrar(mint, mext):
 	# print(mext)
 
 
-#--------------------------------
-#-----FUNCION: USUARIO_VIEJA-----
-#--------------------------------
-
-
-# def f_usr(mext):
-
-# 	while True:
-
-# 		while True:
-
-# 			try:
-
-# 				fila_usr = int(input("Ingrese la fila: "))
-
-# 				if 1 <= fila_usr <= 3:
-# 					fila_usr -= 1
-# 					break
-
-# 				else:
-# 					print("Error, intente otra vez ")
-
-# 			except:
-
-# 				print("Error, intente otra vez ")
-
-# 		while True:
-
-# 			try:
-
-# 				colum_usr = int(input("Ingrese la columna: "))
-
-# 				if 1 <= colum_usr <= 3:
-# 					colum_usr -= 1
-# 					break
-
-# 				else:
-# 					print("Error, intente otra vez ")
-
-# 			except:
-
-# 				print("Error, intente otra vez ")
-
-# 		if mext[fila_usr][colum_usr] == 0:
-# 			break
-
-# 		else:
-# 			print("Ya esta casilla ha sido abierta")
-
-# 	print("\n")
-
-# 	return fila_usr, colum_usr
 
 
 #-----------------------------------------
@@ -417,6 +365,7 @@ def animacion():
 #-----FUNCION USUARIO_NUEVA-----
 #-------------------------------
 
+## LISTO
 
 def f_usr(mext):
 
